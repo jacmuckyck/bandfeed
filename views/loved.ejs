@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BandFeed Love</title>
+    <link rel="stylesheet" href="/static/style.css" />
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    <header>
+      <a id="headingg" href="https://github.com/jacmuckyck/bandcamp-feed">
+        BandFeed Love
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="loved">loved</a></li>
+          <li><a href="/">new</a></li>
+          <li><a href="archive">archive</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main id="data-container">
+      <ol>
+        <% loved.forEach((email)=> { %>
+        <li class="entry">
+          <p class="date"><%= email.formatted_date %></p>
+          <a class="link" href="<%= email.body %>"><%= email.subject %></a>
+          <div class="buttons">
+            <form
+              action="/archivee/<%= encodeURIComponent(email.body) %>"
+              method="POST"
+            >
+              <button type="submit">delete</button>
+            </form>
+          </div>
+        </li>
+        <% }) %>
+      </ol>
+    </main>
+  </body>
+</html>

@@ -41,7 +41,7 @@ try:
     for message_number in range(1, total_messages + 1):
         print(f"Processing email {message_number}/{total_messages}")
 
-        _, message_data = imap.fetch(email_ids[message_number-1], "(BODY[])")
+        _, message_data = imap.fetch(email_ids[message_number - 1], "(BODY[])")
         message = message_data[0][1]
         email_message = email.message_from_bytes(message)
         sender = decode_header(email_message["From"])[0][0]
@@ -92,7 +92,9 @@ try:
                     print(f"Skipping duplicate email with URL: {bodyURL}")
                     break
         else:
-            command2 = "INSERT INTO main (sender, subject, body, date) VALUES (%s, %s, %s, %s)"
+            command2 = (
+                "INSERT INTO main (sender, subject, body, date) VALUES (%s, %s, %s, %s)"
+            )
             values2 = (
                 current_email["From"],
                 current_email["Subject"],
@@ -106,7 +108,7 @@ try:
             cursor.close()
 
         # Delete the processed email
-        imap.store(email_ids[message_number-1], "+FLAGS", "\\Deleted")
+        imap.store(email_ids[message_number - 1], "+FLAGS", "\\Deleted")
 
     # Expunge the deleted emails from the mailbox
     imap.expunge()
@@ -121,4 +123,3 @@ try:
 
 except imaplib.IMAP4.error:
     print(f"Failed to login or retrieve emails.")
-

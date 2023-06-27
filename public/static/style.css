@@ -1,63 +1,63 @@
 * {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  text-decoration: none;
-  font-family: monospace;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    font-family: monospace;
 }
 
 body {
-  background: #fafafa;
-  color: #27292f;
+    background: #fafafa;
+    color: #27292f;
 }
 
 header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 1em;
-  background-color: rgb(227, 227, 227);
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1em;
+    background-color: rgb(227, 227, 227);
 }
 
 header a {
-  color: #27292f;
+    color: #27292f;
 }
 
 button {
-	color: #27292f75;
-	background-color: #fff;
-	box-shadow: 1px 1px 0 0 rgb(227, 227, 227);
-	border-radius: 3px;
+    color: #27292f75;
+    background-color: #fff;
+    box-shadow: 1px 1px 0 0 rgb(227, 227, 227);
+    border-radius: 3px;
 }
 
 .buttons {
-  display: flex;
-  gap: 0.4em;
+    display: flex;
+    gap: 0.4em;
 }
 
 .nav-links {
-  display: flex;
-  list-style: none;
-  gap: 1em;
+    display: flex;
+    list-style: none;
+    gap: 1em;
 }
 
 .entry {
-  margin-bottom: 1em;
+    margin-bottom: 1em;
 }
 
 .date {
-  font-size: 0.8em;
-  -webkit-text-fill-color: #878787;
-  font-style: italic;
+    font-size: 0.8em;
+    -webkit-text-fill-color: #878787;
+    font-style: italic;
 }
 
 .link {
-  color: #27292f;
+    color: #27292f;
 }
 
 .link:active {
-  color: #27292f92;
+    color: #27292f92;
 }
 
 .link:hover {
-  font-style: italic;
+    font-style: italic;
 }

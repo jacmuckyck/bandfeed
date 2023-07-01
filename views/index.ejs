@@ -40,13 +40,13 @@
                             action="/love/<%= encodeURIComponent(email.body) %>"
                             method="POST"
                         >
-                            <button type="submit">love</button>
+                            <button class="loved" type="submit">love</button>
                         </form>
                         <form
                             action="/archive/<%= encodeURIComponent(email.body) %>"
                             method="POST"
                         >
-                            <button type="submit">delete</button>
+                            <button class="delete" type="submit">delete</button>
                         </form>
                     </div>
                 </li>

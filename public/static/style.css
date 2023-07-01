@@ -4,6 +4,7 @@
     list-style: none;
     text-decoration: none;
     font-family: monospace;
+    font-size: large;
 }
 
 body {
@@ -23,21 +24,29 @@ header a {
 }
 
 button {
-    color: #27292f75;
+    /* color: #27292f75; */
     background-color: #fff;
-    box-shadow: 1px 1px 0 0 rgb(227, 227, 227);
+    box-shadow: 0px 1px 0 0 rgb(227, 227, 227);
     border-radius: 3px;
+    border: 0;
+    padding: 2px 5px;
+}
+
+#data-container {
+    padding: 0 10px;
 }
 
 .buttons {
     display: flex;
-    gap: 0.4em;
+    gap: 0.6em;
+    margin: 5px 0 18px 0;
 }
 
 .nav-links {
     display: flex;
     list-style: none;
     gap: 1em;
+    padding: 0 10px;
 }
 
 .entry {
@@ -50,6 +59,14 @@ button {
     font-style: italic;
 }
 
+.loved {
+    color: rgb(248, 54, 151);
+}
+
+.delete {
+    color: #a1a2a8;
+}
+
 .link {
     color: #27292f;
 }
@@ -60,4 +77,8 @@ button {
 
 .link:hover {
     font-style: italic;
+}
+
+#headingg {
+    padding: 0 10px;
 }

@@ -23,6 +23,12 @@ header a {
     color: #27292f;
 }
 
+@media screen and (max-device-width: 480px) {
+    body {
+        -webkit-text-size-adjust: 100%;
+    }
+}
+
 button {
     /* color: #27292f75; */
     background-color: #fafafa;
@@ -31,7 +37,6 @@ button {
     border: 0;
     padding: 2px 5px;
     opacity: 60%;
-    -webkit-text-size-adjust: 100%;
 }
 
 button:hover {

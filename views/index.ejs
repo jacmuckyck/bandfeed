@@ -30,7 +30,7 @@
             <ol>
                 <% main.forEach((email)=> { %>
                 <li class="entry">
-                    <p class="date"><%= email.formatted_date %></p>
+                    <div class="date"><%= email.formatted_date %></div>
                     <a class="link" href="<%= email.body %>">
                         <%= email.subject %>
                     </a>

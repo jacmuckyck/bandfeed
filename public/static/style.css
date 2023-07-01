@@ -1,3 +1,9 @@
+html {
+    -moz-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -61,7 +67,7 @@ button:hover {
 }
 
 .date {
-    font-size: 2px;
+    font-size: 11px;
     -webkit-text-fill-color: #878787;
     font-style: italic;
 }
@@ -78,7 +84,6 @@ button:hover {
 
 .link {
     color: #27292f;
-    font-size: 20px;
 }
 
 .link:active {

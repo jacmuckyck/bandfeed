@@ -61,7 +61,7 @@ button:hover {
 }
 
 .date {
-    font-size: 2em;
+    font-size: small;
     -webkit-text-fill-color: #878787;
     font-style: italic;
 }

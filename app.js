@@ -23,7 +23,9 @@ http.createServer(app).listen(myPort2, () => {});
 
 app.use(express.static("public"));
 app.set("view engine", "ejs");
+
 app.use(redirectMiddleware);
+
 app.get(["/", "/index"], async (req, res) => {
     const connection = await pool.getConnection();
     const [main] = await connection.query(

@@ -6,6 +6,8 @@ const app = express();
 const myKeyPath = process.env.myKey;
 const myCertPath = process.env.myCert;
 const options = { key: myKeyPath, cert: myCertPath };
+const myPort1 = process.env.myPort1;
+const myPort2 = process.env.myPort2;
 
 app.use((req, res, next) => {
     if (req.secure) {
@@ -23,8 +25,8 @@ const pool = createPool({
     database: process.env.DB_DATABASE,
 });
 
-https.createServer(options, app).listen(443, () => {});
-http.createServer(app).listen(80, () => {});
+https.createServer(options, app).listen(myPort1, () => {});
+http.createServer(app).listen(myPort2, () => {});
 
 app.use(express.static("public"));
 app.set("view engine", "ejs");

@@ -8,14 +8,7 @@ const myCertPath = process.env.myCert;
 const options = { key: myKeyPath, cert: myCertPath };
 const myPort1 = process.env.myPort1;
 const myPort2 = process.env.myPort2;
-
-app.use((req, res, next) => {
-    if (req.secure) {
-        next();
-    } else {
-        res.redirect(`https://${req.headers.host}${req.url}`);
-    }
-});
+const redirectMiddleware = require("./redirectMiddleware");
 
 const { createPool } = require("mysql2/promise");
 const pool = createPool({
@@ -30,7 +23,7 @@ http.createServer(app).listen(myPort2, () => {});
 
 app.use(express.static("public"));
 app.set("view engine", "ejs");
-
+app.use(redirectMiddleware);
 app.get(["/", "/index"], async (req, res) => {
     const connection = await pool.getConnection();
     const [main] = await connection.query(

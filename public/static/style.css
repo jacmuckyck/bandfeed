@@ -30,6 +30,11 @@ button {
     border-radius: 3px;
     border: 0;
     padding: 2px 5px;
+    opacity: 60%;
+}
+
+button:hover {
+    opacity: 100%;
 }
 
 #data-container {
@@ -54,17 +59,19 @@ button {
 }
 
 .date {
-    font-size: 0.8em;
+    font-size: 0.7em;
     -webkit-text-fill-color: #878787;
     font-style: italic;
 }
 
 .loved {
     color: rgb(248, 54, 151);
+    font-style: italic;
 }
 
 .delete {
     color: #a1a2a8;
+    font-style: italic;
 }
 
 .link {

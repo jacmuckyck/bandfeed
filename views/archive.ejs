@@ -1,44 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BandFeed Archive</title>
-    <link rel="stylesheet" href="/static/style.css" />
-    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon" />
-  </head>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>BandFeed Archive</title>
+        <link rel="stylesheet" href="/static/style.css" />
+        <link
+            rel="shortcut icon"
+            href="/static/favicon.ico"
+            type="image/x-icon"
+        />
+    </head>
 
-  <body>
-    <header>
-      <a id="headingg" href="https://github.com/jacmuckyck/bandcamp-feed">
-        BandFeed Archive
-      </a>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="archive">archive</a></li>
-          <li><a href="loved">loved</a></li>
-          <li><a href="/">new</a></li>
-        </ul>
-      </nav>
-    </header>
-    <main id="data-container">
-      <ol>
-        <% archive.forEach((email)=> { %>
-        <li class="entry">
-          <p class="date"><%= email.formatted_date %></p>
-          <a class="link" href="<%= email.body %>"><%= email.subject %></a>
-          <div class="buttons">
-            <form
-              action="/lovee/<%= encodeURIComponent(email.body) %>"
-              method="POST"
-            >
-              <button type="submit">love</button>
-            </form>
-          </div>
-        </li>
-        <% }) %>
-      </ol>
-    </main>
-  </body>
+    <body>
+        <header>
+            <a id="headingg" href="https://github.com/jacmuckyck/bandcamp-feed">
+                BandFeed Archive
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="archive">archive</a></li>
+                    <li><a href="loved">loved</a></li>
+                    <li><a href="/">new</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main id="data-container">
+            <ol>
+                <% archive.forEach((email)=> { %>
+                <li class="entry">
+                    <p class="date"><%= email.formatted_date %></p>
+                    <a class="link" href="<%= email.body %>">
+                        <%= email.subject %>
+                    </a>
+                    <div class="buttons">
+                        <form
+                            action="/lovee/<%= encodeURIComponent(email.body) %>"
+                            method="POST"
+                        >
+                            <button type="submit">love</button>
+                        </form>
+                    </div>
+                </li>
+                <% }) %>
+            </ol>
+        </main>
+    </body>
 </html>

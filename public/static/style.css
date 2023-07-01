@@ -52,7 +52,7 @@ button:hover {
 .buttons {
     display: flex;
     gap: 0.6em;
-    margin: 5px 0 18px 0;
+    margin: 2px 0 18px 0;
 }
 
 .nav-links {

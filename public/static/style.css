@@ -25,12 +25,6 @@ header a {
     color: #27292f;
 }
 
-@media screen and (max-device-width: 480px) {
-    body {
-        -webkit-text-size-adjust: 100%;
-    }
-}
-
 button {
     /* color: #27292f75; */
     background-color: #fafafa;
@@ -67,7 +61,7 @@ button:hover {
 }
 
 .date {
-    font-size: 0.7em;
+    font-size: 10px;
     -webkit-text-fill-color: #878787;
     font-style: italic;
 }

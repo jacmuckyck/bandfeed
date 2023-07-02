@@ -12,7 +12,7 @@ mydb = mysql.connector.connect(
     database=os.environ["DB_DATABASE"],
 )
 
-imap_server = "imap.gmail.com"  # IMAP server and account credentials
+imap_server = "imap.gmail.com"
 myEmail = os.environ["myEmail"]
 myPass = os.environ["myPass"]
 
@@ -107,10 +107,8 @@ try:
             mydb.commit()
             cursor.close()
 
-        # Delete the processed email
         imap.store(email_ids[message_number - 1], "+FLAGS", "\\Deleted")
 
-    # Expunge the deleted emails from the mailbox
     imap.expunge()
 
     imap.close()

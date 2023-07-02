@@ -61,7 +61,7 @@ app.get("/archive", async (req, res) => {
 });
 
 app.post("/love/:body", async (req, res) => {
-    const emailID = req.params.body; // Use req.params.body to retrieve the parameter value
+    const emailID = req.params.body;
     const connection = await pool.getConnection();
     await connection.beginTransaction();
     await connection.query(
@@ -100,7 +100,7 @@ app.post("/archivee/:body", async (req, res) => {
     await connection.query("DELETE FROM love WHERE body = ?", [emailID]);
     await connection.commit();
     connection.release();
-    res.redirect("/loved"); // Redirect to the "/love" route
+    res.redirect("/loved");
 });
 
 app.post("/lovee/:body", async (req, res) => {
@@ -114,7 +114,7 @@ app.post("/lovee/:body", async (req, res) => {
     await connection.query("DELETE FROM archive WHERE body = ?", [emailID]);
     await connection.commit();
     connection.release();
-    res.redirect("/archive"); // Redirect to the "/archive" route
+    res.redirect("/archive");
 });
 
 app.listen(() => {

@@ -66,7 +66,7 @@ app.post("/love/:body", async (req, res) => {
     await connection.beginTransaction();
 
     const [email] = await connection.query(
-        "SELECT id FROM main WHERE body = ?",
+        "SELECT id, sender, subject, body, date FROM main WHERE body = ?",
         [emailID]
     );
 
@@ -77,24 +77,24 @@ app.post("/love/:body", async (req, res) => {
         return;
     }
 
-    const emailIDInMain = email[0].id;
+    const { id, sender, subject, body, date } = email[0];
 
     await connection.query(
-        `INSERT INTO love (sender, subject, body, date) SELECT sender, subject, body, date FROM main WHERE body = ?`,
-        [emailID]
+        "INSERT INTO love (id, sender, subject, body, date) VALUES (?, ?, ?, ?, ?)",
+        [id, sender, subject, body, date]
     );
     await connection.query("DELETE FROM main WHERE body = ?", [emailID]);
 
     await connection.commit();
     connection.release();
 
-    const lastEmailID = emailIDInMain + 1;
+    const lastEmailID = id + 1;
 
     res.redirect(`/#${lastEmailID}`);
 });
 
-app.post("/archive/:body", async (req, res) => {
-    const emailID = req.params.body;
+app.post("/archive/:archiveBody", async (req, res) => {
+    const emailID = req.params.archiveBody;
     const connection = await pool.getConnection();
     await connection.beginTransaction();
 
@@ -126,8 +126,8 @@ app.post("/archive/:body", async (req, res) => {
     res.redirect(`/#${lastEmailID}`);
 });
 
-app.post("/archivee/:body", async (req, res) => {
-    const emailID = req.params.body;
+app.post("/archivee/:archiveBody", async (req, res) => {
+    const emailID = req.params.archiveBody;
     const connection = await pool.getConnection();
     await connection.beginTransaction();
     await connection.query(
@@ -140,8 +140,8 @@ app.post("/archivee/:body", async (req, res) => {
     res.redirect("/loved");
 });
 
-app.post("/lovee/:body", async (req, res) => {
-    const emailID = req.params.body;
+app.post("/lovee/:loveBody", async (req, res) => {
+    const emailID = req.params.loveBody;
     const connection = await pool.getConnection();
     await connection.beginTransaction();
     await connection.query(

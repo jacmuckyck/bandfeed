@@ -17,6 +17,7 @@ header {
     display: flex;
     justify-content: space-between;
     background-color: rgb(240, 239, 239);
+    padding-bottom: 2px;
 }
 
 header a {

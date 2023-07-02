@@ -29,12 +29,11 @@
         <main id="data-container">
             <ol>
                 <% main.forEach((email)=> { %>
-                <li class="entry">
+                <li tabindex="0" class="entry">
                     <div class="date"><%= email.formatted_date %></div>
-                    <a class="link" href="<%= email.body %>">
+                    <a class="link" target="_blank" href="<%= email.body %>">
                         <%= email.subject %>
                     </a>
-
                     <div class="buttons">
                         <form
                             action="/love/<%= encodeURIComponent(email.body) %>"

@@ -1,4 +1,5 @@
 redirectMiddleware.js
+backup.sqlz
 # Logs
 logs
 *.log

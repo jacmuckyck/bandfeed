@@ -20,26 +20,27 @@
             </a>
             <nav>
                 <ul class="nav-links">
-                    <li><a href="archive">archive</a></li>
-                    <li><a href="loved">loved</a></li>
                     <li><a href="/">new</a></li>
+                    <li><a href="loved">loved</a></li>
+                    <li><a href="archive">archive</a></li>
                 </ul>
             </nav>
         </header>
+
         <main id="data-container">
             <ol>
                 <% archive.forEach((email)=> { %>
-                <li class="entry">
-                    <p class="date"><%= email.formatted_date %></p>
-                    <a class="link" href="<%= email.body %>">
+                <li tabindex="0" class="entry">
+                    <div class="date"><%= email.formatted_date %></div>
+                    <a class="link" target="_blank" href="<%= email.body %>">
                         <%= email.subject %>
                     </a>
                     <div class="buttons">
                         <form
-                            action="/lovee/<%= encodeURIComponent(email.body) %>"
+                            action="/love/<%= encodeURIComponent(email.body) %>"
                             method="POST"
                         >
-                            <button type="submit">love</button>
+                            <button class="loved" type="submit">💌</button>
                         </form>
                     </div>
                 </li>

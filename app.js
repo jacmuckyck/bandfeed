@@ -45,7 +45,7 @@ app.get(["/", "/index"], async (req, res) => {
 app.get("/loved", async (req, res) => {
     const connection = await pool.getConnection();
     const [loved] = await connection.query(
-        "SELECT *, DATE_FORMAT(date, '%d %m %Y') AS formatted_date FROM love ORDER BY date DESC"
+        "SELECT *, DATE_FORMAT(date, '%d %m %Y') AS formatted_date FROM love ORDER BY id DESC"
     );
     connection.release();
     res.render("loved", { loved });
@@ -54,7 +54,7 @@ app.get("/loved", async (req, res) => {
 app.get("/archive", async (req, res) => {
     const connection = await pool.getConnection();
     const [archive] = await connection.query(
-        "SELECT *, DATE_FORMAT(date, '%d %m %Y') AS formatted_date FROM archive ORDER BY date DESC"
+        "SELECT *, DATE_FORMAT(date, '%d %m %Y') AS formatted_date FROM archive ORDER BY id DESC"
     );
     connection.release();
     res.render("archive", { archive });

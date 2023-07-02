@@ -16,30 +16,31 @@
     <body>
         <header>
             <a id="headingg" href="https://github.com/jacmuckyck/bandfeed">
-                BandFeed Love
+                BandFeed Loved
             </a>
             <nav>
                 <ul class="nav-links">
-                    <li><a href="loved">loved</a></li>
                     <li><a href="/">new</a></li>
+                    <li><a href="loved">loved</a></li>
                     <li><a href="archive">archive</a></li>
                 </ul>
             </nav>
         </header>
+
         <main id="data-container">
             <ol>
                 <% loved.forEach((email)=> { %>
-                <li class="entry">
-                    <p class="date"><%= email.formatted_date %></p>
-                    <a class="link" href="<%= email.body %>">
+                <li tabindex="0" class="entry">
+                    <div class="date"><%= email.formatted_date %></div>
+                    <a class="link" target="_blank" href="<%= email.body %>">
                         <%= email.subject %>
                     </a>
                     <div class="buttons">
                         <form
-                            action="/archivee/<%= encodeURIComponent(email.body) %>"
+                            action="/archive/<%= encodeURIComponent(email.body) %>"
                             method="POST"
                         >
-                            <button type="submit">delete</button>
+                            <button class="delete" type="submit">delete</button>
                         </form>
                     </div>
                 </li>

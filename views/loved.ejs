@@ -30,14 +30,14 @@
         <main id="data-container">
             <ol>
                 <% loved.forEach((email)=> { %>
-                <li tabindex="0" class="entry">
+                <li tabindex="0" id="<%= email.id %>" class="entry">
                     <div class="date"><%= email.formatted_date %></div>
                     <a class="link" target="_blank" href="<%= email.body %>">
                         <%= email.subject %>
                     </a>
                     <div class="buttons">
                         <form
-                            action="/archive/<%= encodeURIComponent(email.body) %>"
+                            action="/archivee/<%= encodeURIComponent(email.body) %>"
                             method="POST"
                         >
                             <button class="delete" type="submit">delete</button>

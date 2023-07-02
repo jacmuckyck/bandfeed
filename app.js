@@ -64,20 +64,54 @@ app.post("/love/:body", async (req, res) => {
     const emailID = req.params.body;
     const connection = await pool.getConnection();
     await connection.beginTransaction();
+
+    const [email] = await connection.query(
+        "SELECT id FROM main WHERE body = ?",
+        [emailID]
+    );
+
+    if (email.length === 0 || !email[0].id) {
+        // Email not found or id is undefined
+        connection.release();
+        res.redirect("/");
+        return;
+    }
+
+    const emailIDInMain = email[0].id;
+
     await connection.query(
         `INSERT INTO love (sender, subject, body, date) SELECT sender, subject, body, date FROM main WHERE body = ?`,
         [emailID]
     );
     await connection.query("DELETE FROM main WHERE body = ?", [emailID]);
+
     await connection.commit();
     connection.release();
-    res.redirect("/");
+
+    const lastEmailID = emailIDInMain + 1;
+
+    res.redirect(`/#${lastEmailID}`);
 });
 
 app.post("/archive/:body", async (req, res) => {
     const emailID = req.params.body;
     const connection = await pool.getConnection();
     await connection.beginTransaction();
+
+    const [email] = await connection.query(
+        "SELECT id FROM main WHERE body = ?",
+        [emailID]
+    );
+
+    if (email.length === 0 || !email[0].id) {
+        // Email not found or id is undefined
+        connection.release();
+        res.redirect("/");
+        return;
+    }
+
+    const emailIDInMain = email[0].id;
+
     await connection.query(
         "INSERT INTO archive (sender, subject, body, date) SELECT sender, subject, body, date FROM main WHERE body = ?",
         [emailID]
@@ -86,7 +120,10 @@ app.post("/archive/:body", async (req, res) => {
     await connection.query("DELETE FROM love WHERE body = ?", [emailID]);
     await connection.commit();
     connection.release();
-    res.redirect("/");
+
+    const lastEmailID = emailIDInMain + 1;
+
+    res.redirect(`/#${lastEmailID}`);
 });
 
 app.post("/archivee/:body", async (req, res) => {

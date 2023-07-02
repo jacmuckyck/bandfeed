@@ -80,8 +80,8 @@ app.post("/love/:body", async (req, res) => {
     const { id, sender, subject, body, date } = email[0];
 
     await connection.query(
-        "INSERT INTO love (id, sender, subject, body, date) VALUES (?, ?, ?, ?, ?)",
-        [id, sender, subject, body, date]
+        "INSERT INTO love (sender, subject, body, date) VALUES (?, ?, ?, ?)",
+        [sender, subject, body, date]
     );
     await connection.query("DELETE FROM main WHERE body = ?", [emailID]);
 
@@ -93,8 +93,8 @@ app.post("/love/:body", async (req, res) => {
     res.redirect(`/#${lastEmailID}`);
 });
 
-app.post("/archive/:archiveBody", async (req, res) => {
-    const emailID = req.params.archiveBody;
+app.post("/archive/:body", async (req, res) => {
+    const emailID = req.params.body;
     const connection = await pool.getConnection();
     await connection.beginTransaction();
 
